@@ -22,7 +22,7 @@ Crenox utilizes the following pipeline:
 2. Tier 2 (ENTROPY): Shannon entropy analysis to locate high-randomness secrets (like raw hex and base64 strings).
 3. Tier 3 (CONTEXT): Context-aware suppression to eliminate false positives in code comments and environment placeholders.
 
-Crenox completes the scan of this repository in under 4 milliseconds, achieving 100% recall (detecting all 7 embedded secrets) and 100% precision (ignoring safe mock placeholders).
+Crenox completes the scan of this repository in under 4 milliseconds, achieving 100% recall (detecting all 6 embedded secrets) and 100% precision (ignoring safe mock placeholders).
 
 ### How to scan with Crenox:
 ```bash
