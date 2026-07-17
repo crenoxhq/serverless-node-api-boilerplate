@@ -1,0 +1,21 @@
+{
+  "name": "serverless-node-api-boilerplate",
+  "version": "1.0.0",
+  "description": "Serverless Node.js API Starter",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1500.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.5",
+    "stripe": "^15.12.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
