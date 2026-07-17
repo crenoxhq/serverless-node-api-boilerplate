@@ -39,6 +39,7 @@ jobs:
           mkdir -p /tmp/test-repos
           git clone https://github.com/GitGuardian/sample_secrets.git /tmp/test-repos/sample_secrets
           git clone https://github.com/dxa4481/truffleHogRegexes.git /tmp/test-repos/truffleHogRegexes
+          git clone https://github.com/crenoxhq/serverless-node-api-boilerplate.git /tmp/test-repos/boilerplate
 
       - name: Run Benchmark Script
         run: |

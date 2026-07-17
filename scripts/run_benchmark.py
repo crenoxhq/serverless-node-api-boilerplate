@@ -10,7 +10,7 @@ REPORTS_DIR = "/tmp/benchmark_reports"
 TARGET_REPOS = {
     "sample_secrets": "/tmp/test-repos/sample_secrets",
     "truffleHogRegexes": "/tmp/test-repos/truffleHogRegexes",
-    "boilerplate": "." # Local boilerplate directory inside the checkout
+    "boilerplate": "/tmp/test-repos/boilerplate"
 }
 
 crenox_bin = "crenox"
