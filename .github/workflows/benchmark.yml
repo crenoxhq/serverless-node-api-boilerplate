@@ -1,0 +1,51 @@
+name: Compare Secrets Scanners
+
+on:
+  workflow_dispatch: # Allows manual trigger from the GitHub Mobile / Web UI
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Boilerplate Code
+        uses: actions/checkout@v4
+
+      - name: Setup Go Environment
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Clone and Build Crenox (from main dev branch)
+        run: |
+          git clone https://github.com/crenoxhq/crenox.git /tmp/crenox-src
+          cd /tmp/crenox-src
+          git checkout dev || true
+          go build -o /tmp/crenox cmd/crenox/main.go
+          sudo mv /tmp/crenox /usr/local/bin/crenox
+
+      - name: Install Gitleaks
+        run: |
+          wget https://github.com/gitleaks/gitleaks/releases/download/v8.18.2/gitleaks_8.18.2_linux_x64.tar.gz
+          tar -zxvf gitleaks_8.18.2_linux_x64.tar.gz
+          sudo mv gitleaks /usr/local/bin/gitleaks
+
+      - name: Install Betterleaks
+        run: |
+          go install github.com/crenoxhq/betterleaks@latest
+          sudo mv $(go env GOPATH)/bin/betterleaks /usr/local/bin/betterleaks
+
+      - name: Clone External Test Repositories
+        run: |
+          mkdir -p /tmp/test-repos
+          git clone https://github.com/GitGuardian/sample_secrets.git /tmp/test-repos/sample_secrets
+          git clone https://github.com/dxa4481/truffleHogRegexes.git /tmp/test-repos/truffleHogRegexes
+
+      - name: Run Benchmark Script
+        run: |
+          python3 scripts/run_benchmark.py
+
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-report
+          path: benchmark_report.md
