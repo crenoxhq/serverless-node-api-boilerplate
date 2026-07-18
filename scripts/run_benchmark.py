@@ -10,7 +10,8 @@ REPORTS_DIR = "/tmp/benchmark_reports"
 TARGET_REPOS = {
     "sample_secrets": "/tmp/test-repos/sample_secrets",
     "truffleHogRegexes": "/tmp/test-repos/truffleHogRegexes",
-    "boilerplate": "/tmp/test-repos/boilerplate"
+    "boilerplate": "/tmp/test-repos/boilerplate",
+    "large_file_test": "/tmp/test-repos/large_file_test"
 }
 
 crenox_bin = "crenox"
@@ -160,6 +161,9 @@ This benchmark evaluates the average performance, resource consumption, and find
 | **boilerplate** | **Crenox** | **{results_standard["boilerplate"]["crenox"]["avg_real"]:.4f} s** | **{results_standard["boilerplate"]["crenox"]["avg_cpu"]:.4f} s** | **{results_standard["boilerplate"]["crenox"]["peak_ram"]:.1f} MB** | **{results_standard["boilerplate"]["crenox"]["findings"]}** |
 | | Gitleaks | {results_standard["boilerplate"]["gitleaks"]["avg_real"]:.4f} s | {results_standard["boilerplate"]["gitleaks"]["avg_cpu"]:.4f} s | {results_standard["boilerplate"]["gitleaks"]["peak_ram"]:.1f} MB | {results_standard["boilerplate"]["gitleaks"]["findings"]} |
 | | Betterleaks | {results_standard["boilerplate"]["betterleaks"]["avg_real"]:.4f} s | {results_standard["boilerplate"]["betterleaks"]["avg_cpu"]:.4f} s | {results_standard["boilerplate"]["betterleaks"]["peak_ram"]:.1f} MB | {results_standard["boilerplate"]["betterleaks"]["findings"]} |
+| **large_file_test** | **Crenox** | **{results_standard["large_file_test"]["crenox"]["avg_real"]:.4f} s** | **{results_standard["large_file_test"]["crenox"]["avg_cpu"]:.4f} s** | **{results_standard["large_file_test"]["crenox"]["peak_ram"]:.1f} MB** | **{results_standard["large_file_test"]["crenox"]["findings"]}** |
+| | Gitleaks | {results_standard["large_file_test"]["gitleaks"]["avg_real"]:.4f} s | {results_standard["large_file_test"]["gitleaks"]["avg_cpu"]:.4f} s | {results_standard["large_file_test"]["gitleaks"]["peak_ram"]:.1f} MB | {results_standard["large_file_test"]["gitleaks"]["findings"]} |
+| | Betterleaks | {results_standard["large_file_test"]["betterleaks"]["avg_real"]:.4f} s | {results_standard["large_file_test"]["betterleaks"]["avg_cpu"]:.4f} s | {results_standard["large_file_test"]["betterleaks"]["peak_ram"]:.1f} MB | {results_standard["large_file_test"]["betterleaks"]["findings"]} |
 
 ## 2. Git History Scan Results (History Mode Averages)
 
@@ -174,6 +178,9 @@ This benchmark evaluates the average performance, resource consumption, and find
 | **boilerplate** | **Crenox** | **{results_history["boilerplate"]["crenox"]["avg_real"]:.4f} s** | **{results_history["boilerplate"]["crenox"]["avg_cpu"]:.4f} s** | **{results_history["boilerplate"]["crenox"]["peak_ram"]:.1f} MB** | **{results_history["boilerplate"]["crenox"]["findings"]}** |
 | | Gitleaks | {results_history["boilerplate"]["gitleaks"]["avg_real"]:.4f} s | {results_history["boilerplate"]["gitleaks"]["avg_cpu"]:.4f} s | {results_history["boilerplate"]["gitleaks"]["peak_ram"]:.1f} MB | {results_history["boilerplate"]["gitleaks"]["findings"]} |
 | | Betterleaks | {results_history["boilerplate"]["betterleaks"]["avg_real"]:.4f} s | {results_history["boilerplate"]["betterleaks"]["avg_cpu"]:.4f} s | {results_history["boilerplate"]["betterleaks"]["peak_ram"]:.1f} MB | {results_history["boilerplate"]["betterleaks"]["findings"]} |
+| **large_file_test** | **Crenox** | **{results_history["large_file_test"]["crenox"]["avg_real"]:.4f} s** | **{results_history["large_file_test"]["crenox"]["avg_cpu"]:.4f} s** | **{results_history["large_file_test"]["crenox"]["peak_ram"]:.1f} MB** | **{results_history["large_file_test"]["crenox"]["findings"]}** |
+| | Gitleaks | {results_history["large_file_test"]["gitleaks"]["avg_real"]:.4f} s | {results_history["large_file_test"]["gitleaks"]["avg_cpu"]:.4f} s | {results_history["large_file_test"]["gitleaks"]["peak_ram"]:.1f} MB | {results_history["large_file_test"]["gitleaks"]["findings"]} |
+| | Betterleaks | {results_history["large_file_test"]["betterleaks"]["avg_real"]:.4f} s | {results_history["large_file_test"]["betterleaks"]["avg_cpu"]:.4f} s | {results_history["large_file_test"]["betterleaks"]["peak_ram"]:.1f} MB | {results_history["large_file_test"]["betterleaks"]["findings"]} |
 """
 
 # Write file

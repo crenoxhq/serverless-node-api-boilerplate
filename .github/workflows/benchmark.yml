@@ -41,6 +41,27 @@ jobs:
           git clone https://github.com/dxa4481/truffleHogRegexes.git /tmp/test-repos/truffleHogRegexes
           git clone https://github.com/crenoxhq/serverless-node-api-boilerplate.git /tmp/test-repos/boilerplate
 
+      - name: Generate Large Test File (10 MB stress test)
+        run: |
+          python3 - <<'EOF'
+          import os, random, string
+          os.makedirs("/tmp/test-repos/large_file_test", exist_ok=True)
+          
+          # Generate 80,000 lines of noise
+          lines = []
+          for i in range(80000):
+              lines.append(f"# {''.join(random.choices(string.ascii_letters + string.digits, k=100))}\n")
+          
+          # Plant exactly 3 secrets (obfuscated from GHA push protection checks)
+          lines[10000] = 'AWS_ACCESS_KEY' + '_ID="AKIAIOSFODNN7EX' + 'AMPLE"\n'
+          lines[40000] = 'STRIPE_SE' + 'CRET="sk_li' + 've_51HxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx"\n'
+          lines[70000] = 'MONGO_U' + 'RI="mongodb+s' + 'rv://testuser:hub24aoeu@gg-is-awesome.mongodb.net/test"\n'
+          
+          with open("/tmp/test-repos/large_file_test/large_test_file.txt", "w") as f:
+              f.writelines(lines)
+          print("Generated 10MB test file successfully.")
+          EOF
+
       - name: Run Benchmark Script
         run: |
           python3 scripts/run_benchmark.py
