@@ -15,12 +15,12 @@ jobs:
         with:
           go-version: '1.21'
 
-      - name: Clone and Build Crenox (from main dev branch)
+      - name: Clone and Build Crenox (from dev branch)
         run: |
           git clone https://github.com/crenoxhq/crenox.git /tmp/crenox-src
           cd /tmp/crenox-src
-          git checkout dev || true
-          go build -o /tmp/crenox cmd/crenox/main.go
+          git checkout dev
+          go build -trimpath -o /tmp/crenox ./cmd/crenox/
           sudo mv /tmp/crenox /usr/local/bin/crenox
 
       - name: Install Gitleaks
